@@ -91,41 +91,86 @@
             margin-top: 20px;
         }
 
+        /* Hidden card content */
+        .card-content {
+            display: none; /* Hide the card initially */
+        }
+
+        /* Passcode entry style */
+        .passcode-entry {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 50px;
+        }
+
+        .passcode-entry input {
+            padding: 10px;
+            font-size: 18px;
+            width: 200px;
+            border-radius: 5px;
+            border: 2px solid #ddd;
+        }
+
+        .passcode-entry button {
+            padding: 10px 20px;
+            font-size: 18px;
+            margin-left: 10px;
+            border: none;
+            background-color: #FF6347;
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+        }
     </style>
 </head>
 <body>
 
-    <!-- Envelope Cover -->
+    <!-- Envelope Cover with Passcode Button -->
     <div class="envelope-cover" id="envelope">
-        <h1>💌 Open Your Birthday Surprise! 💌</h1>
+        <h1 onclick="enterPasscode()">💌 Open Your Birthday Surprise! 💌</h1>
     </div>
 
-    <h1>🎉 Happy Birthday! 🎉</h1>
+    <div id="passcodePrompt" class="passcode-entry" style="display:none;">
+        <input type="password" id="passcodeInput" placeholder="Enter passcode">
+        <button onclick="checkPasscode()">Submit</button>
+    </div>
 
-    <!-- Swiper carousel for images -->
-    <div class="swiper-container">
-        <div class="swiper-wrapper">
-            <div class="swiper-slide"><img src="img0.jfif" alt="Image 1"></div>
-            <div class="swiper-slide"><img src="img1.jfif" alt="Image 2"></div>
-            <div class="swiper-slide"><img src="img3.jfif" alt="Image 3"></div>
-            <div class="swiper-slide"><img src="img4.jfif" alt="Image 4"></div>
-            <div class="swiper-slide"><img src="img5.jfif" alt="Image 5"></div>
+    <!-- Card content (hidden initially) -->
+    <div id="cardContent" class="card-content">
+        <h1>🎉 Happy Birthday! 🎉</h1>
+
+        <!-- Swiper carousel for images -->
+        <div class="swiper-container">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide"><img src="C:/Users/671473/Pictures/TBD/img0.jfif" alt="Image 1"></div>
+                <div class="swiper-slide"><img src="C:/Users/671473/Pictures/TBD/img1.jfif" alt="Image 2"></div>
+                <div class="swiper-slide"><img src="C:/Users/671473/Pictures/TBD/img3.jfif" alt="Image 3"></div>
+                <div class="swiper-slide"><img src="C:/Users/671473/Pictures/TBD/img4.jfif" alt="Image 3"></div>
+                <div class="swiper-slide"><img src="C:/Users/671473/Pictures/TBD/img5.jfif" alt="Image 3"></div>
+                <div class="swiper-slide"><img src="C:/Users/671473/Pictures/TBD/img6.jfif" alt="Image 3"></div>
+                <div class="swiper-slide"><img src="C:/Users/671473/Pictures/TBD/img7.jfif" alt="Image 3"></div>
+                <div class="swiper-slide"><img src="C:/Users/671473/Pictures/TBD/img8.jfif" alt="Image 3"></div>
+                <div class="swiper-slide"><img src="C:/Users/671473/Pictures/TBD/img9.jfif" alt="Image 3"></div>
+                <div class="swiper-slide"><img src="C:/Users/671473/Pictures/TBD/img10.jfif" alt="Image 3"></div>
+                <div class="swiper-slide"><img src="C:/Users/671473/Pictures/TBD/img11.jfif" alt="Image 3"></div>
+            </div>
+
+            <!-- Add navigation buttons -->
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
         </div>
-        
-        <!-- Add navigation buttons -->
-        <div class="swiper-button-next"></div>
-        <div class="swiper-button-prev"></div>
-    </div>
 
-    <!-- Birthday message -->
-    <div class="birthday-message">
-        Wishing you the happiest birthday, filled with love and joy! You are amazing! 🎂🎈
-    </div>
+        <!-- Birthday message -->
+        <div class="birthday-message">
+            สุขสันต์วันเกิดค่ะ 🎂🎈
+        </div>
 
-    <!-- YouTube Audio (hidden video) -->
-    <div class="youtube-audio">
-        <iframe width="0" height="0" src="https://www.youtube.com/embed/YJoKzsaiC8E?autoplay=1&loop=1" 
-        frameborder="0" allow="autoplay" allowfullscreen></iframe>
+        <!-- YouTube Audio (hidden video) -->
+        <div class="youtube-audio">
+            <iframe width="0" height="0" src="https://www.youtube.com/embed/YJoKzsaiC8E?autoplay=1&loop=1"
+            frameborder="0" allow="autoplay" allowfullscreen></iframe>
+        </div>
     </div>
 
     <!-- Scripts for Swiper -->
@@ -146,7 +191,28 @@
         const envelope = document.getElementById('envelope');
         envelope.addEventListener('click', function() {
             envelope.classList.add('hidden');
+            document.getElementById('passcodePrompt').style.display = 'flex'; // Show passcode input
         });
+
+        // Function to check the passcode
+        function checkPasscode() {
+            const passcode = document.getElementById('passcodeInput').value;
+            const correctPasscode = "tass"; // Replace with your passcode
+
+            // If passcode is correct, show the card content
+            if (passcode === correctPasscode) {
+                document.getElementById('cardContent').style.display = 'block'; // Show card
+                document.getElementById('passcodePrompt').style.display = 'none'; // Hide passcode input
+            } else {
+                alert("Incorrect passcode, please try again.");
+            }
+        }
+
+        // Trigger passcode entry when clicking on the envelope
+        function enterPasscode() {
+            document.getElementById('passcodePrompt').style.display = 'flex';
+            envelope.classList.add('hidden'); // Hide envelope when clicking
+        }
     </script>
 
 </body>
