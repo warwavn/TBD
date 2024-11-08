@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday!</title>
+    
+    <!-- Link to Swiper.js for the image carousel -->
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            margin-top: 20px;
+            font-size: 36px;
+            color: #FF6347;
+        }
+
+        .birthday-message {
+            margin-top: 20px;
+            font-size: 24px;
+            color: #333;
+        }
+
+        /* Swiper container */
+        .swiper-container {
+            width: 100%;
+            height: auto;
+            max-width: 600px;
+            margin: auto;
+        }
+
+        /* Frame around the image */
+        .swiper-slide {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .swiper-slide img {
+            width: 100%;
+            height: auto;
+            max-width: 480px;
+            max-height: 600px; /* 4:5 aspect ratio */
+            object-fit: cover;
+            border: 10px solid #f0f0f0; /* Frame */
+            border-radius: 15px; /* Rounded corners */
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Shadow */
+        }
+
+        /* Container for the hidden YouTube audio */
+        .youtube-audio {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>🎉 Happy Birthday! 🎉</h1>
+
+    <!-- Swiper -->
+    <div class="swiper-container">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide"><img src="img1.jfif" alt="Image 1"></div>
+            <div class="swiper-slide"><img src="img2.jfif" alt="Image 2"></div>
+            <div class="swiper-slide"><img src="img3.jfif" alt="Image 3"></div>
+        </div>
+        
+        <!-- Add navigation buttons -->
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
+    </div>
+
+    <!-- Birthday message -->
+    <div class="birthday-message">
+        Wishing you the happiest birthday, filled with love and joy! You are amazing! 🎂🎈
+    </div>
+
+    <!-- YouTube Audio (hidden video) -->
+    <div class="youtube-audio">
+        <iframe width="0" height="0" src="https://www.youtube.com/embed/uF2KrNN8dV0?si=VocwjYwaj5N0ULQg" 
+        frameborder="0" allow="autoplay" allowfullscreen></iframe>
+    </div>
+
+
+
+
+    <!-- Scripts for Swiper -->
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <script>
+        var swiper = new Swiper('.swiper-container', {
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+        });
+    </script>
+
+</body>
+</html>
