@@ -29,11 +29,11 @@
             color: #333;
         }
 
-        /* Swiper container */
+        /* Swiper container for images */
         .swiper-container {
             width: 100%;
             height: auto;
-            max-width: 600px;
+            max-width: 400px; /* Adjust to mobile size */
             margin: auto;
         }
 
@@ -47,30 +47,69 @@
         .swiper-slide img {
             width: 100%;
             height: auto;
-            max-width: 480px;
-            max-height: 600px; /* 4:5 aspect ratio */
+            aspect-ratio: 4 / 5; /* Enforce 4:5 ratio */
+            max-width: 320px;
+            max-height: 400px; /* Scaled for mobile */
             object-fit: cover;
-            border: 10px solid #f0f0f0; /* Frame */
-            border-radius: 15px; /* Rounded corners */
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Shadow */
+            border: 8px solid #f0f0f0; /* Frame */
+            border-radius: 10px; /* Rounded corners */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
         }
 
-        /* Container for the hidden YouTube audio */
+        /* Envelope Cover */
+        .envelope-cover {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #ffcccc;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 10; /* Ensure it's above other content */
+            transition: transform 0.8s ease; /* Slide effect */
+        }
+
+        .envelope-cover h1 {
+            font-size: 36px;
+            color: #fff;
+            padding: 20px;
+            background-color: #ff6347;
+            border-radius: 15px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            cursor: pointer;
+        }
+
+        /* Hidden Envelope after click */
+        .envelope-cover.hidden {
+            transform: translateY(-100%); /* Slide up and hide */
+        }
+
+        /* YouTube audio container */
         .youtube-audio {
             margin-top: 20px;
         }
+
     </style>
 </head>
 <body>
 
+    <!-- Envelope Cover -->
+    <div class="envelope-cover" id="envelope">
+        <h1>💌 Open Your Birthday Surprise! 💌</h1>
+    </div>
+
     <h1>🎉 Happy Birthday! 🎉</h1>
 
-    <!-- Swiper -->
+    <!-- Swiper carousel for images -->
     <div class="swiper-container">
         <div class="swiper-wrapper">
-            <div class="swiper-slide"><img src="img1.jfif" alt="Image 1"></div>
-            <div class="swiper-slide"><img src="img2.jfif" alt="Image 2"></div>
+            <div class="swiper-slide"><img src="img0.jfif" alt="Image 1"></div>
+            <div class="swiper-slide"><img src="img1.jfif" alt="Image 2"></div>
             <div class="swiper-slide"><img src="img3.jfif" alt="Image 3"></div>
+            <div class="swiper-slide"><img src="img4.jfif" alt="Image 4"></div>
+            <div class="swiper-slide"><img src="img5.jfif" alt="Image 5"></div>
         </div>
         
         <!-- Add navigation buttons -->
@@ -85,21 +124,28 @@
 
     <!-- YouTube Audio (hidden video) -->
     <div class="youtube-audio">
-        <iframe width="0" height="0" src="https://www.youtube.com/embed/uF2KrNN8dV0?si=VocwjYwaj5N0ULQg" 
+        <iframe width="0" height="0" src="https://www.youtube.com/embed/YJoKzsaiC8E?autoplay=1&loop=1" 
         frameborder="0" allow="autoplay" allowfullscreen></iframe>
     </div>
-
-
-
 
     <!-- Scripts for Swiper -->
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
     <script>
+        // Initialize Swiper for the carousel
         var swiper = new Swiper('.swiper-container', {
+            slidesPerView: 1,
+            spaceBetween: 10,
+            loop: true, // Make it a looping carousel
             navigation: {
                 nextEl: '.swiper-button-next',
                 prevEl: '.swiper-button-prev',
             },
+        });
+
+        // Envelope click to reveal content
+        const envelope = document.getElementById('envelope');
+        envelope.addEventListener('click', function() {
+            envelope.classList.add('hidden');
         });
     </script>
 
